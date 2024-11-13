@@ -21,4 +21,21 @@ function drawStar(x, y, size, brightness) {
     ctx.fill();
 }
 
+// functie voor sterrenhemel
+function drawStarrySky() {
+   
+    ctx.fillStyle = '#000';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+    
+    const numberOfStars = Math.floor((canvas.width * canvas.height) / 3000); 
+
+    for (let i = 0; i < numberOfStars; i++) {
+        const x = Math.random() * canvas.width;
+        const y = Math.random() * canvas.height;
+        const size = Math.random() * 3 + 1; 
+        const brightness = Math.random() * 0.8 + 0.2;
+
+        drawStar(x, y, size, brightness);
+    }
+}
