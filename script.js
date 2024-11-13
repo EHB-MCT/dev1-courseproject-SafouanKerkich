@@ -13,3 +13,12 @@ function setupCanvas() {
 
 setupCanvas(); 
 
+// Function for one star
+function drawStar(x, y, size, brightness) {
+    ctx.beginPath();
+    ctx.arc(x, y, size, 0, Math.PI * 2);
+    ctx.fillStyle = rgba(255, 255, 255, ${brightness});
+    ctx.fill();
+}
+
+
