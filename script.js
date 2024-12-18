@@ -33,6 +33,30 @@ function initializeStars() {
     }
 }
 
+// Signature tekenen rechts
+function drawSignature() {
+    const sigWidth = 40; 
+    const sigHeight = 30; 
+    const padding = 20; 
+
+    // Positie rechtsonder
+    const x = canvas.width - sigWidth - padding;
+    const y = canvas.height - sigHeight - padding;
+
+    // Grote rechthoek
+    context.fillStyle = "#d35f5f"; 
+    context.fillRect(x, y, sigWidth, sigHeight);
+
+    // Witte vierkant in het midden
+    context.fillStyle = "white";
+    context.fillRect(x + sigWidth / 4, y + sigHeight / 4, sigWidth / 2, sigHeight / 2);
+
+    // Kleine blokjes onderaan
+    context.fillStyle = "#d35f5f";
+    const smallBlockSize = sigWidth / 5;
+    context.fillRect(x, y + sigHeight, smallBlockSize, smallBlockSize); 
+    context.fillRect(x + sigWidth - smallBlockSize, y + sigHeight, smallBlockSize, smallBlockSize); 
+}
 // Sterren tekenen glinsteren
 function drawStars(time) {
     
@@ -54,6 +78,8 @@ function drawStars(time) {
         context.fillStyle = `rgba(255, 255, 255, ${brightness})`; 
         context.fill();
     }
+    // Signature tekenen
+    drawSignature();
 }
 
 // Animatie starten
