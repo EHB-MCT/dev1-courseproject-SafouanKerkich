@@ -36,7 +36,7 @@ function initializeStars() {
 // Signature tekenen rechts
 function drawSignature() {
     const sigWidth = 40; 
-    const sigHeight = 30; 
+    const sigHeight = 30;
     const padding = 20; 
 
     // Positie rechtsonder
