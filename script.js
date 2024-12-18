@@ -1,39 +1,40 @@
-// Canvas setup
-const canvas = document.getElementById('canvas');
-const ctx = canvas.getContext('2d');
+"use strict";
 
-// Functie om het canvas schermvullend te maken en sterrenhemel te tekenen
+// Importeren van Context, Utils and noise
+import context from './context.js';
+import * as Utils from './Utils.js';
+import * as Noise from './Noise.js';
+
+// Canvas setup
 function setupCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    context.canvas.width = window.innerWidth;
+    context.canvas.height = window.innerHeight;
     drawStarrySky();
 }
 
-
 window.addEventListener('resize', setupCanvas);
-setupCanvas(); 
+setupCanvas();
 
-// Functie om een enkele ster te tekenen
+// Funnctie om 1 ster te tekenen
 function drawStar(x, y, size, brightness) {
-    ctx.beginPath();
-    ctx.arc(x, y, size, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(255, 255, 255, ${brightness})`; 
-    ctx.fill();
+    context.beginPath();
+    context.arc(x, y, size, 0, Math.PI * 2);
+    context.fillStyle = `rgba(255, 255, 255, ${brightness})`;
+    context.fill();
 }
 
-// Functie om de sterrenhemel te genereren
+// Functioe om meerdere sterren te genereren
 function drawStarrySky() {
-    
-    ctx.fillStyle = '#000'; 
-    ctx.fillRect(0, 0, canvas.width, canvas.height); 
+    context.fillStyle = '#000';
+    context.fillRect(0, 0, context.canvas.width, context.canvas.height);
 
-    const numberOfStars = Math.floor((canvas.width * canvas.height) / 3000); 
+    const numberOfStars = Math.floor((context.canvas.width * context.canvas.height) / 3000);
 
     for (let i = 0; i < numberOfStars; i++) {
-        const x = Math.random() * canvas.width;
-        const y = Math.random() * canvas.height;
-        const size = Math.random() * 3 + 1; 
-        const brightness = Math.random() * 0.8 + 0.2; 
+        const x = Utils.randomNumber(0, context.canvas.width);
+        const y = Utils.randomNumber(0, context.canvas.height);
+        const size = Math.random() * 3 + 1;
+        const brightness = Math.random() * 0.8 + 0.2;
 
         drawStar(x, y, size, brightness);
     }
